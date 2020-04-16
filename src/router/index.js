@@ -3,8 +3,11 @@ import Router from 'vue-router'
 import Dashboard from '@/components/Dashboard'
 import NewEmployee from '@/components/NewEmployee'
 import ViewEmployee from '@/components/ViewEmployee'
-import CreateItem from '@/components/news/CreateItem'
 import EditEmployee from '@/components/EditEmployee'
+import CreateNews from '@/components/news/Createnews'
+import NewsDashboard from '@/components/news/NewsDashboard'
+import ViewNews from '@/components/news/ViewNews'
+import EditNews from '@/components/news/EditNews'
 import Login from '@/components/Login'
 import Register from '@/components/Register'
 import firebase from 'firebase'
@@ -21,6 +24,40 @@ let router = new Router({
       meta: {
         requiresAuth: true
 
+      }
+    },
+    {
+      path: '/news',
+      name: 'news-dashboard',
+      component: NewsDashboard,
+      meta: {
+        requiresAuth: true
+
+      }
+    },
+    {
+      path: '/new-news',
+      name: 'new-news',
+      component: CreateNews,
+      meta: {
+        requiresAuth: true
+
+      }
+    },
+    {
+      path: '/news/:news_id',
+      name: 'view-news',
+      component: ViewNews,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/news/edit/:news_id',
+      name: 'edit-news',
+      component: EditNews,
+      meta: {
+        requiresAuth: true
       }
     },
     {
@@ -65,15 +102,7 @@ let router = new Router({
       component: ViewEmployee,
       meta: {
         requiresAuth: true
-
-      },
-        path: '/new-item',
-        name: 'new-item',
-        component: CreateItem,
-        meta: {
-          requiresAuth: true
-  
-        }
+      }
     },
 
   ]
@@ -100,7 +129,7 @@ router.beforeEach((to, from, next) => {
       if(firebase.auth().currentUser){
         // Go to login
         next({
-          path: '/dashb',
+          path: '/dashboard',
           query: {
             redirect: to.fullPath
           }
