@@ -21,6 +21,12 @@
                         <label>News Image</label>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="input-field colo s12">
+                        <input type="file" @change="onFileSelected" required>
+                        <label>News Image</label>
+                    </div>
+                </div>
                  <div class="row">
                     <div class="input-field colo s12">
                         <input type="text" v-model="news_title" required>
@@ -72,6 +78,9 @@ export default {
             })
             .then(docRef => this.$router.push('/'))
             .catch(error => console.log(err))
+            },
+            onFileSelected(event) {
+                console.log(event)
             }
         }
     }
