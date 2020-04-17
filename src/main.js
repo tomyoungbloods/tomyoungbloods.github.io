@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import firebase from 'firebase'
 import './components/firebaseInit'
+import vuetify from './plugins/vuetify';
 
 
 Vue.config.productionTip = false
@@ -17,6 +18,7 @@ firebase.auth().onAuthStateChanged(user => {
       el: '#app',
       router,
       components: { App },
+      vuetify,
       template: '<App/>'
     })
   }
