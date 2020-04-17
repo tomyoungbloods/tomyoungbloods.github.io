@@ -1,9 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Dashboard from '@/components/Dashboard'
-import NewEmployee from '@/components/NewEmployee'
-import ViewEmployee from '@/components/ViewEmployee'
-import EditEmployee from '@/components/EditEmployee'
+import NewsFeed from '@/components/NewsFeed'
 import CreateNews from '@/components/news/Createnews'
 import NewsDashboard from '@/components/news/NewsDashboard'
 import ViewNews from '@/components/news/ViewNews'
@@ -19,10 +16,10 @@ let router = new Router({
   routes: [
     {
       path: '/',
-      name: 'dashboard',
-      component: Dashboard,
+      name: 'news-feed',
+      component: NewsFeed,
       meta: {
-        requiresAuth: true
+        requiresGuest: true
       }
     },
     {
@@ -74,35 +71,34 @@ let router = new Router({
       component: Register,
       meta: {
         requiresAuth: true
+      }
+    },
+    // {
+    //   path: '/new',
+    //   name: 'new-employee',
+    //   component: NewEmployee,
+    //   meta: {
+    //     requiresAuth: true
 
-      }
-    },
-    {
-      path: '/new',
-      name: 'new-employee',
-      component: NewEmployee,
-      meta: {
-        requiresAuth: true
+    //   }
+    // },
+    // {
+    //   path: '/edit/:employee_id',
+    //   name: 'edit-employee',
+    //   component: EditEmployee,
+    //   meta: {
+    //     requiresAuth: true
 
-      }
-    },
-    {
-      path: '/edit/:employee_id',
-      name: 'edit-employee',
-      component: EditEmployee,
-      meta: {
-        requiresAuth: true
-
-      }
-    },
-    {
-      path: '/:employee_id',
-      name: 'view-employee',
-      component: ViewEmployee,
-      meta: {
-        requiresAuth: true
-      }
-    },
+    //   }
+    // },
+    // {
+    //   path: '/:employee_id',
+    //   name: 'view-employee',
+    //   component: ViewEmployee,
+    //   meta: {
+    //     requiresAuth: true
+    //   }
+    // },
 
   ]
 })
