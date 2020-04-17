@@ -6,11 +6,16 @@
                 </li>
                 <li class="collection-item">News ID: {{news_id}}</li>
                 <li class="collection-item">Schrijver: {{news_author}}</li>
-                <li class="collection-item">News Image: {{news_image}}</li>
+                <li class="collection-item">News Image: 
+                    {{news_image}}
+                </li>
                 <li class="collection-item">News Title: {{news_title}}</li>
                 <li class="collection-item">News Text: {{news_text}}</li>
                 <li class="collection-item">News Time: {{news_time}}</li>
             </ul>
+            <img :src="news_image" style="width:100%;" alt="">
+
+            <!-- <img src="https://firebasestorage.googleapis.com/v0/b/vue-news-70d59.appspot.com/o/news%2Fimage002.png?alt=media&token=c34b71b9-3901-4787-a781-6e93cd2fce43"> -->
             <router-link to="/news" class="btn grey">Back</router-link>
             <button @click="deleteNews" class="btn red">Delete</button>
                 <div class="fixed-action-btn">

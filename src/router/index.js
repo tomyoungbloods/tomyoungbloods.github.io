@@ -10,7 +10,7 @@ import ViewNews from '@/components/news/ViewNews'
 import EditNews from '@/components/news/EditNews'
 import Login from '@/components/Login'
 import Register from '@/components/Register'
-import firebase from 'firebase'
+import firebase, { functions } from 'firebase'
 
 
 Vue.use(Router)
@@ -23,7 +23,6 @@ let router = new Router({
       component: Dashboard,
       meta: {
         requiresAuth: true
-
       }
     },
     {
@@ -145,3 +144,11 @@ router.beforeEach((to, from, next) => {
 });
 
 export default router;
+
+// exports.uploaddFile = functions.https.onRequest((req, res) => {
+
+//     res.status(200).json({
+//       message: 'it worked!'
+//     })
+
+// })

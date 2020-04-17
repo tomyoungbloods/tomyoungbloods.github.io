@@ -17,13 +17,7 @@
                 </div>
                 <div class="row">
                     <div class="input-field colo s12">
-                        <input type="text" v-model="news_image" required>
-                        <label>News Image</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field colo s12">
-                        <input type="file" @change="onFileSelected" required>
+                        <input type="file" @change="uploadImage" required>
                         <label>News Image</label>
                     </div>
                 </div>
@@ -54,6 +48,8 @@
 
 <script>
 import db from '../firebaseInit'
+import firebase, { storage } from 'firebase'
+
 export default {
      dept: 'new-employee',
     data(){
@@ -79,10 +75,35 @@ export default {
             .then(docRef => this.$router.push('/'))
             .catch(error => console.log(err))
             },
-            onFileSelected(event) {
-                console.log(event)
+            uploadImage(e) {
+
+                let file = e.target.files[0]
+
+                var storageRef = firebase.storage().ref('news/' + file.name)
+
+                let uploadTask = storageRef.put(file);
+
+                storageRef.put(file);
+
+                    uploadTask.on('state_changed', (snapshot) =>{
+
+                }, (error) => {
+                // Handle unsuccessful uploads
+                }, () => {
+                // Handle successful uploads on complete
+                // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+                uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+                    this.news_image = downloadURL;
+                    console.log('File available at', downloadURL);
+                });
+                });
+                }
             }
-        }
-    }
+}
+
+
+
+
+
 
 </script>
